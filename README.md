@@ -1,7 +1,9 @@
-# log-samba-audit
+# log-samba-audit-viewer
 
 Программа с графическим интерфейсом (Python 3 + tkinter) для чтения
-JSON-аудита Samba AD DC. Версия 1.0.
+JSON-аудита Samba AD DC. 
+
+<img width="1919" height="1047" alt="изображение" src="https://github.com/user-attachments/assets/7084f367-df4c-4636-8912-95eacdc85f77" />
 
 ## Возможности
 - Чтение аудита по сети через `systemd-journal-gatewayd` (порт 19531):
