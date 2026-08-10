@@ -20,8 +20,7 @@ JSON-аудита Samba AD DC.
 без сторонних зависимостей.
 
 ## Предварительная настройка серверной части
-Для чтения системных журналов, нужно настроить службу systemd-journal-gatewayd, 
-которая последством RESTfulAPI от Journald предоставляет доступ к системному журналу на КД.
+Для чтения системных журналов настраивается служба systemd-journal-gatewayd, предоставляющая через REST API доступ к журналам systemd-journald на контроллере домена.
 
 ```
 [root@dc ~]# apt-get update && apt-get install systemd-journal-remote -y
