@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=log-samba-audit
+GenericName=Samba Audit Log Viewer
+Comment=View and search Samba AD JSON audit logs
+Exec=log-samba-audit-viewer
+Icon=log-samba-audit-viewer
+Terminal=false
+Type=Application
+Categories=System;Monitor;
+Keywords=samba;audit;log;journald;security;

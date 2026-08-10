@@ -1,0 +1,249 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: log-samba-audit 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+# --- menu ---
+msgid "File"
+msgstr "Файл"
+
+msgid "Quit"
+msgstr "Выход"
+
+msgid "Language"
+msgstr "Язык"
+
+msgid "Help"
+msgstr "Справка"
+
+msgid "About"
+msgstr "О программе"
+
+msgid "Samba AD JSON audit log viewer"
+msgstr "Просмотр JSON-аудита Samba AD"
+
+msgid "Version %s"
+msgstr "Версия %s"
+
+msgid "Project website:"
+msgstr "Сайт проекта:"
+
+msgid "Close"
+msgstr "Закрыть"
+
+msgid "Export selected..."
+msgstr "Экспорт выделенных..."
+
+msgid "Export"
+msgstr "Экспорт"
+
+msgid "No rows selected."
+msgstr "Нет выделенных строк."
+
+msgid "No valid events to export."
+msgstr "Нет действительных событий для экспорта."
+
+msgid "Export to TSV"
+msgstr "Экспорт в TSV"
+
+msgid "TSV (Tab-separated)"
+msgstr "TSV (разделитель — табуляция)"
+
+msgid "All files"
+msgstr "Все файлы"
+
+msgid "Data"
+msgstr "Данные"
+
+msgid "Exported %d records to %s"
+msgstr "Экспортировано записей: %d в %s"
+
+msgid "Export failed: %s"
+msgstr "Ошибка экспорта: %s"
+
+msgid "The language will change after restarting the application."
+msgstr "Язык изменится после перезапуска приложения."
+
+# --- connection ---
+msgid "Connection"
+msgstr "Подключение"
+
+msgid "Host"
+msgstr "Хост"
+
+msgid "Port"
+msgstr "Порт"
+
+msgid "Scheme"
+msgstr "Схема"
+
+msgid "TLS (https)"
+msgstr "TLS (https)"
+
+msgid "Verify server certificate"
+msgstr "Проверять сертификат сервера"
+
+msgid "CA cert"
+msgstr "CA-сертификат"
+
+msgid "Client cert"
+msgstr "Клиентский серт."
+
+msgid "Client key"
+msgstr "Клиентский ключ"
+
+msgid "Units"
+msgstr "Юниты"
+
+msgid "comma-separated, e.g. samba.service, smbd.service"
+msgstr "через запятую, напр. samba.service, smbd.service"
+
+msgid "Tail"
+msgstr "Хвост"
+
+msgid "Test"
+msgstr "Проверить"
+
+msgid "Connect"
+msgstr "Подключить"
+
+msgid "Disconnect"
+msgstr "Отключить"
+
+msgid "Follow"
+msgstr "Слежение"
+
+# --- filters ---
+msgid "Filters"
+msgstr "Фильтры"
+
+msgid "Search"
+msgstr "Поиск"
+
+msgid "From"
+msgstr "С"
+
+msgid "To"
+msgstr "По"
+
+msgid "date: YYYY-MM-DD [HH:MM:SS]"
+msgstr "дата: ГГГГ-ММ-ДД [ЧЧ:ММ:СС]"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "all"
+msgstr "все"
+
+msgid "success"
+msgstr "успех"
+
+msgid "failure"
+msgstr "неудача"
+
+msgid "Event types"
+msgstr "Типы событий"
+
+msgid "Apply"
+msgstr "Применить"
+
+msgid "Reset"
+msgstr "Сбросить"
+
+# --- table columns ---
+msgid "Events"
+msgstr "События"
+
+msgid "Time"
+msgstr "Время"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Account / SID"
+msgstr "Учётная запись / SID"
+
+msgid "Remote"
+msgstr "Удалённый адрес"
+
+msgid "DN / Object"
+msgstr "DN / Объект"
+
+# --- status bar / messages ---
+msgid "Ready"
+msgstr "Готово"
+
+msgid "Testing connection..."
+msgstr "Проверка подключения..."
+
+msgid "Connected to: %s"
+msgstr "Подключено к: %s"
+
+msgid "Connection OK: %s"
+msgstr "Подключение успешно: %s"
+
+msgid "Loading..."
+msgstr "Загрузка..."
+
+msgid "Connecting to %s..."
+msgstr "Подключение к %s..."
+
+msgid "Connected to %s — %d events"
+msgstr "Подключено к %s — событий: %d"
+
+msgid "Disconnected"
+msgstr "Отключено"
+
+msgid "Not connected — %s"
+msgstr "Нет подключения — %s"
+
+msgid "Showing %d of %d events"
+msgstr "Показано %d из %d событий"
+
+msgid "Loading date range..."
+msgstr "Загрузка диапазона дат..."
+
+msgid "Showing %d of %d events (limit reached — narrow the range)"
+msgstr "Показано %d из %d событий (достигнут предел — сузьте диапазон)"
+
+msgid "Following new events..."
+msgstr "Слежение за новыми событиями..."
+
+msgid "Follow stopped"
+msgstr "Слежение остановлено"
+
+msgid "Error"
+msgstr "Ошибка"
+
+msgid "Error: %s"
+msgstr "Ошибка: %s"
+
+msgid "Invalid date: %s"
+msgstr "Неверная дата: %s"
+
+# --- date picker ---
+msgid "Select Date"
+msgstr "Выбор даты"
+
+msgid "Mon"
+msgstr "Пн"
+
+msgid "Tue"
+msgstr "Вт"
+
+msgid "Wed"
+msgstr "Ср"
+
+msgid "Thu"
+msgstr "Чт"
+
+msgid "Fri"
+msgstr "Пт"
+
+msgid "Sat"
+msgstr "Сб"
+
+msgid "Sun"
+msgstr "Вс"
