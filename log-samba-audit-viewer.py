@@ -6,9 +6,9 @@ import os
 _CANDIDATE_DIRS = [
     os.path.dirname(os.path.abspath(__file__)),
     os.path.dirname(os.path.realpath(__file__)),
-    "/usr/share/log-samba-audit",
-    "/usr/local/share/log-samba-audit",
-    os.path.expanduser("~/.local/share/log-samba-audit"),
+    "/usr/share/log-samba-audit-viewer",
+    "/usr/local/share/log-samba-audit-viewer",
+    os.path.expanduser("~/.local/share/log-samba-audit-viewer"),
 ]
 
 for _d in _CANDIDATE_DIRS:
