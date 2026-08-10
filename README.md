@@ -24,8 +24,6 @@ JSON-аудита Samba AD DC.
 
 ```
 [root@dc ~]# apt-get update && apt-get install systemd-journal-remote -y
-[root@dc ~]# useradd --system --no-create-home --user-group systemd-journal-gateway
-[root@dc ~]# usermod -aG systemd-journal systemd-journal-gateway
 [root@dc ~]# mkdir -p /etc/systemd/system/systemd-journal-gatewayd.socket.d/
 [root@dc ~]# cat > /etc/systemd/system/systemd-journal-gatewayd.socket.d/listen.conf << 'EOF'
 [Socket]
