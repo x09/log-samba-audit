@@ -17,6 +17,29 @@ JSON-аудита Samba AD DC. Версия 1.0.
 Только стандартная библиотека Python 3 (модули из репозитория ALT Linux),
 без сторонних зависимостей.
 
+## Предварительная настройка серверной части
+Для чтения системных журналов, нужно настроить службу systemd-journal-gatewayd, 
+которая последством RESTfulAPI от Journald предоставляет доступ к системному журналу на КД.
+
+```
+[root@dc ~]# apt-get update && apt-get install systemd-journal-remote -y
+[root@dc ~]# useradd --system --no-create-home --user-group systemd-journal-gateway
+[root@dc ~]# usermod -aG systemd-journal systemd-journal-gateway
+[root@dc ~]# mkdir -p /etc/systemd/system/systemd-journal-gatewayd.socket.d/
+[root@dc ~]# cat > /etc/systemd/system/systemd-journal-gatewayd.socket.d/listen.conf << 'EOF'
+[Socket]
+# Сбрасываем дефолтный ListenStream
+ListenStream=
+# Слушаем на всех интерфейсах, порт 19531 (по умолчанию)
+ListenStream=0.0.0.0:19531
+EOF
+systemctl daemon-reload
+[root@dc ~]# systemctl enable systemd-journal-gatewayd.socket
+[root@dc ~]# systemctl start systemd-journal-gatewayd.socket
+[root@dc ~]# ss -tlnp | grep 19531
+```
+
+
 ## Зависимости (ALT Linux)
 - `python3`
 - `python3-module-tkinter`
