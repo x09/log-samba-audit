@@ -28,7 +28,11 @@ def main():
     # Import UI after gettext is installed so _() is available in modules.
     from lsa.ui.app import App
     app = App(cfg)
-    app.run()
+    try:
+        app.run()
+    except KeyboardInterrupt:
+        print("\nExiting gracefully...")
+        sys.exit(0)
 
 
 if __name__ == "__main__":
