@@ -36,12 +36,29 @@ class App:
         self.last_cursor = ""
         self.controller = Controller(self.root, self._on_message)
 
+    def _icon_path(self, sz):
+        """Find the window icon for a given size.
+
+        Prefer the installed hicolor location (RPM ships PNGs there under the
+        package name), then fall back to the bundled icons/ dir used when
+        running from source. Returns a path or None.
+        """
+        candidates = [
+            "/usr/share/icons/hicolor/%dx%d/apps/log-samba-audit-viewer.png" % (sz, sz),
+            "/usr/local/share/icons/hicolor/%dx%d/apps/log-samba-audit-viewer.png" % (sz, sz),
+            os.path.join(ICON_DIR, "log-samba-audit-%d.png" % sz),
+        ]
+        for path in candidates:
+            if os.path.exists(path):
+                return path
+        return None
+
     def _set_window_icon(self):
-        """Set the title-bar / taskbar icon from icons/ (best-effort)."""
+        """Set the title-bar / taskbar icon (best-effort)."""
         self._icons = []  # keep refs so Tk doesn't garbage-collect them
         for sz in (256, 128, 64, 32):
-            path = os.path.join(ICON_DIR, "log-samba-audit-%d.png" % sz)
-            if os.path.exists(path):
+            path = self._icon_path(sz)
+            if path:
                 try:
                     self._icons.append(tk.PhotoImage(file=path))
                 except tk.TclError:
@@ -201,6 +218,7 @@ class App:
             messagebox.showerror(_("Error"),
                                  _("Invalid date: %s") % bad)
             return
+        self.left.filters.mark_clean()
         self.right.filter = f
         # A text search or date range needs data from the server: client-side
         # filtering can only see the already-loaded tail. Scan the journal
