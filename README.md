@@ -33,8 +33,7 @@ ListenStream=
 ListenStream=0.0.0.0:19531
 EOF
 systemctl daemon-reload
-[root@dc ~]# systemctl enable systemd-journal-gatewayd.socket
-[root@dc ~]# systemctl start systemd-journal-gatewayd.socket
+[root@dc ~]# systemctl enable --now systemd-journal-gatewayd
 [root@dc ~]# ss -tlnp | grep 19531
 ```
 
