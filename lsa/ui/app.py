@@ -191,6 +191,7 @@ class App:
             events, cursor, truncated = payload
             self.last_cursor = cursor or self.last_cursor
             self.right.set_events(events)
+            self.left.filters.hide_stop_button()
             if truncated:
                 self.set_status(
                     _("Showing %d of %d events (limit reached — narrow the range)")
@@ -215,8 +216,8 @@ class App:
         try:
             f = self.left.filters.build_filter()
         except ValueError as bad:
-            messagebox.showerror(_("Error"),
-                                 _("Invalid date: %s") % bad)
+            # Could be a bad date or a query syntax error; show as-is.
+            messagebox.showerror(_("Error"), str(bad))
             return
         self.left.filters.mark_clean()
         self.right.filter = f
@@ -230,11 +231,17 @@ class App:
                 self.set_status(_("Searching the journal..."))
             else:
                 self.set_status(_("Loading date range..."))
+            self.left.filters.show_stop_button()
             self.controller.scan_backward(self._build_source(),
                                           f.accepts, f.date_from)
         else:
             self.right.set_filter(f)
             self._report_shown()
+
+    def on_stop_search(self):
+        """User clicked Stop during scan_backward."""
+        self.controller.stop_scan()
+        self.set_status(_("Search stopped by user"))
 
     def _report_shown(self):
         self.set_status(_("Showing %d of %d events") %
