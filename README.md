@@ -3,7 +3,7 @@
 Программа с графическим интерфейсом (Python 3 + tkinter) для чтения
 JSON-аудита Samba AD DC через REST API systemd-journal-gatewayd. 
 
-<img width="1919" height="1048" alt="log-samba-audit-viewer" src="https://github.com/user-attachments/assets/c39408a5-13ba-4126-aad8-f6cceeabb02e" />
+<img width="1919" height="1049" alt="log-samba-audit-viewer" src="https://github.com/user-attachments/assets/b37002b5-066f-45f0-8bd7-5af05ca889de" />
 
 
 ## Возможности
