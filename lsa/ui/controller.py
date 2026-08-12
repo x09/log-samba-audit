@@ -14,7 +14,8 @@ class Controller:
         self.root = root
         self._on_message = on_message          # called on main thread: (kind, payload)
         self.q = queue.Queue()
-        self._stop = threading.Event()
+        self._stop = threading.Event()         # for follow
+        self._scan_stop = threading.Event()    # for scan_backward
         self._follow_thread = None
         self._poll()
 
@@ -46,14 +47,19 @@ class Controller:
         threading.Thread(target=work, daemon=True).start()
 
     def scan_backward(self, source, accept, date_from):
+        self._scan_stop.clear()
         def work():
             try:
                 events, cursor, truncated = source.scan_backward(
-                    accept, date_from=date_from)
+                    accept, date_from=date_from, check_stop=self._scan_stop.is_set)
                 self.q.put(("range", (events, cursor, truncated)))
             except SourceError as e:
                 self.q.put(("error", str(e)))
         threading.Thread(target=work, daemon=True).start()
+
+    def stop_scan(self):
+        """Signal any running scan_backward to stop."""
+        self._scan_stop.set()
 
     def start_follow(self, source, last_cursor):
         self.stop_follow()
