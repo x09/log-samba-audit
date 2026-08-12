@@ -1,5 +1,6 @@
-"""Client-side filtering of events (dates, types, statuses, text)."""
+"""Client-side filtering of events (dates, types, statuses, query expressions)."""
 from .model import SUCCESS_STATUSES
+from .query import parse_query
 
 
 class Filter:
@@ -8,7 +9,13 @@ class Filter:
         self.date_to = None        # datetime or None
         self.types = set()         # empty = all
         self.statuses = set()      # empty = all; special: __success__/__failure__
-        self.text = ""
+        self.text = ""             # raw query string (for UI/config)
+        self._predicate = None     # compiled query predicate
+
+    def set_query(self, text):
+        """Parse and store a search query. Raises ValueError on syntax error."""
+        self.text = text.strip()
+        self._predicate = parse_query(self.text)
 
     def accepts(self, ev):
         if self.date_from and ev.dt and ev.dt < self.date_from:
@@ -19,7 +26,7 @@ class Filter:
             return False
         if self.statuses and not self._status_ok(ev):
             return False
-        if self.text and not ev.matches_text(self.text):
+        if self._predicate and not ev.matches_query(self._predicate):
             return False
         return True
 

@@ -70,9 +70,17 @@ class Event:
         return self.status in SUCCESS_STATUSES
 
     def matches_text(self, needle):
+        """Simple substring search (legacy, kept for backward compatibility)."""
         if not needle:
             return True
         return needle.lower() in self.message.lower()
+
+    def matches_query(self, predicate):
+        """Apply a query predicate (from lsa.query.parse_query) to this event.
+
+        The predicate is a callable that takes the message string and returns bool.
+        """
+        return predicate(self.message)
 
     def time_str(self):
         if self.dt is None:
