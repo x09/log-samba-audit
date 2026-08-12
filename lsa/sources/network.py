@@ -113,14 +113,14 @@ class NetworkSource(LogSource):
         return events, last_cursor
 
     def scan_backward(self, accept, date_from=None, batch=500,
-                      max_matches=50000, max_scanned=200000):
+                      max_matches=50000, max_scanned=200000, check_stop=None):
         """Page backward through the journal, collecting events where
         accept(ev) is True.
 
         Stops when: date_from is reached (oldest scanned < date_from), or the
         start of the journal is hit, or a safety cap fires (max_matches
-        collected, or max_scanned entries examined). Returns
-        (events_oldest_first, last_cursor, truncated).
+        collected, or max_scanned entries examined), or check_stop() returns True.
+        Returns (events_oldest_first, last_cursor, truncated).
         """
         _e, newest_cursor, _f = self._read_batch("entries=:-1:1")
         if not newest_cursor:
@@ -133,6 +133,10 @@ class NetworkSource(LogSource):
         scanned = 0
         oldest_dt = None
         while True:
+            # Check if the caller requested cancellation.
+            if check_stop and check_stop():
+                truncated = True
+                break
             # `entries=CURSOR:-batch:batch` returns up to `batch` entries whose
             # window ends at CURSOR (oldest-first). We de-dup by cursor.
             evs, _last, first_cursor = self._read_batch(
