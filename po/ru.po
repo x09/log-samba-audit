@@ -70,6 +70,9 @@ msgstr "Язык изменится после перезапуска прило
 msgid "Connection"
 msgstr "Подключение"
 
+msgid "Network settings"
+msgstr "Сетевые настройки"
+
 msgid "Host"
 msgstr "Хост"
 
@@ -151,6 +154,12 @@ msgstr "Применить"
 
 msgid "Reset"
 msgstr "Сбросить"
+
+msgid "Stop search"
+msgstr "Остановить поиск"
+
+msgid "Search stopped by user"
+msgstr "Поиск остановлен пользователем"
 
 # --- table columns ---
 msgid "Events"
