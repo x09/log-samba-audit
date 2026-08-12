@@ -16,7 +16,7 @@ JSON-аудита Samba AD DC через REST API systemd-journal-gatewayd.
   - `domainuser1 & administrator` — оба термина в событии
   - `user1 | user2 | admin` — любой из терминов
   - `(domain* | admin*) & success` — группировка и префиксный поиск
-  - См. [docs/SEARCH_SYNTAX.md](docs/SEARCH_SYNTAX.md) для подробной документации.
+  - См. [SEARCH_SYNTAX.md](SEARCH_SYNTAX.md) для подробной документации.
 - Кнопка остановки долгих поисков (сканирование можно прервать в любой момент).
 - Режим слежения (follow) — показ только новых событий по мере поступления.
 - Двуязычный интерфейс (English по умолчанию, Русский). Переключение в меню
